@@ -1,8 +1,5 @@
-package com.example.services;
+package com.example.models;
 
-import com.example.models.ClassA;
-import com.example.models.ClassB;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,13 +8,15 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @ExtendWith(MockitoExtension.class)
-public class ClassATest {
+public class GameTest {
     @InjectMocks
-    ClassA classA;
+    Game game;
 
     @Mock
-    ClassB classB;
+    Player player;
 
     @BeforeEach
     void setup() {
@@ -25,9 +24,9 @@ public class ClassATest {
     }
 
     @Test
-    void sumTwoValuesTest() {
-        Mockito.when(classB.getX()).thenReturn(20);
+    void gameWeaponAttackTest() {
+        Mockito.when(player.getWeapon()).thenReturn("Sword");
 
-        assertEquals(25, classA.sumValues());
+        assertEquals("Player attack with: Sword", game.attack());
     }
 }

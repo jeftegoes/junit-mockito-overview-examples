@@ -46,7 +46,7 @@
           <version>5.11.0</version>
           <scope>test</scope>
       </dependency>
-      
+
       <dependency>
           <groupId>org.junit.jupiter</groupId>
           <artifactId>junit-jupiter-engine</artifactId>
@@ -107,7 +107,7 @@
     <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-junit-jupiter</artifactId>
-        <version>5.14.2</version>
+        <version>5.24.0</version>
         <scope>test</scope>
     </dependency>
 ```

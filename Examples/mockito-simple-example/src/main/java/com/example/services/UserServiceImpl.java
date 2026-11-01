@@ -1,5 +1,6 @@
 package com.example.services;
 
+import com.example.exceptions.UserServiceException;
 import com.example.models.User;
 import com.example.repositories.UserRepository;
 
@@ -7,9 +8,12 @@ import java.util.UUID;
 
 public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
+    private final EmailVerificationService emailVerificationService;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository,
+                           EmailVerificationService emailVerificationService) {
         this.userRepository = userRepository;
+        this.emailVerificationService = emailVerificationService;
     }
 
     @Override
@@ -27,13 +31,19 @@ public class UserServiceImpl implements UserService {
         boolean isUserCreated;
 
         try {
-            isUserCreated = userRepository.save(user);
+            isUserCreated = this.userRepository.save(user);
         } catch (RuntimeException ex) {
             throw new IllegalArgumentException(ex.getMessage());
         }
 
         if (!isUserCreated)
-            throw new IllegalArgumentException("Could not create user.");
+            throw new UserServiceException("Could not create user.");
+
+        try {
+            this.emailVerificationService.scheduleEmailConfirmation(user);
+        } catch (RuntimeException ex) {
+            throw new UserServiceException(ex.getMessage());
+        }
 
         return user;
     }

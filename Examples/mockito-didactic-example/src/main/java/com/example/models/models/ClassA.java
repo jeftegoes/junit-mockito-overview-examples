@@ -1,4 +1,4 @@
-package com.example.models;
+package com.example.models.models;
 
 public class ClassA {
     private ClassB classB;

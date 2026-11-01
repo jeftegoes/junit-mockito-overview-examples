@@ -1,5 +1,6 @@
 package com.example.services;
 
+import com.example.exceptions.UserServiceException;
 import com.example.models.User;
 import com.example.repositories.UserRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
@@ -21,6 +22,9 @@ public class UserServiceTest {
     @Mock
     UserRepositoryImpl userRepository;
 
+    @Mock
+    EmailVerificationServiceImpl emailVerificationService;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -29,7 +33,7 @@ public class UserServiceTest {
 
     @BeforeEach
     void setup() {
-        userService = new UserServiceImpl(userRepository);
+        userService = new UserServiceImpl(userRepository, emailVerificationService);
         firstName = "Jefté";
         lastName = "Goes";
         email = "test@test.com";
@@ -69,7 +73,7 @@ public class UserServiceTest {
     public void didNotSaveCorrectlyTest() {
         Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(false);
 
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(UserServiceException.class,
                 () -> userService.createUser(firstName, lastName, email, password, repeatPassword));
 
         Mockito.verify(userRepository, Mockito.times(1)).save(Mockito.any(User.class));
