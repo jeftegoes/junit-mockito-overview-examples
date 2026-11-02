@@ -1,5 +1,6 @@
 package com.example.services;
 
+import com.example.exceptions.EmailNotificationServiceException;
 import com.example.exceptions.UserServiceException;
 import com.example.models.User;
 import com.example.repositories.UserRepository;
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService {
         try {
             isUserCreated = this.userRepository.save(user);
         } catch (RuntimeException ex) {
-            throw new IllegalArgumentException(ex.getMessage());
+            throw new UserServiceException(ex.getMessage());
         }
 
         if (!isUserCreated)
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
         try {
             this.emailVerificationService.scheduleEmailConfirmation(user);
         } catch (RuntimeException ex) {
-            throw new UserServiceException(ex.getMessage());
+            throw new EmailNotificationServiceException(ex.getMessage());
         }
 
         return user;

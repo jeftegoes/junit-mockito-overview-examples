@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ProductApplicationTest {
@@ -28,13 +30,13 @@ public class ProductApplicationTest {
     @DisplayName("Should save image correctly.")
     @Test
     public void shouldSaveImageCorrectly() {
-        Mockito.when(productService.save(Mockito.any(Product.class))).thenReturn(true);
+        when(productService.save(any(Product.class))).thenReturn(true);
 
         Product product = new Product(1, "A", 10, "X:/");
 
         productApplication.append(product);
 
-        Mockito.verify(productService, Mockito.times(1)).save(Mockito.any(Product.class));
+        verify(productService, times(1)).save(any(Product.class));
     }
 
     @DisplayName("Should remove image correctly.")
@@ -42,7 +44,7 @@ public class ProductApplicationTest {
     public void shouldRemoveImageCorrectly() {
         productApplication.remove(1);
 
-        Mockito.verify(productService, Mockito.times(1)).remove(Mockito.any(Integer.class));
+        verify(productService, times(1)).remove(any(Integer.class));
     }
 
     @DisplayName("Should update image correctly.")
@@ -52,6 +54,6 @@ public class ProductApplicationTest {
 
         productApplication.update(1, product);
 
-        Mockito.verify(productService, Mockito.times(1)).update(Mockito.any(Product.class));
+        verify(productService, times(1)).update(any(Product.class));
     }
 }

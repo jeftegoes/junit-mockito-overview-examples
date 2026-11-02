@@ -1,4 +1,4 @@
-# JUnit and mockito - Overview and Examples <!-- omit in toc -->
+# JUnit and Mockito - Overview and Examples <!-- omit in toc -->
 
 ## Contents <!-- omit in toc -->
 
@@ -12,7 +12,8 @@
   - [6.2. Types of Test Doubles](#62-types-of-test-doubles)
   - [6.3. Mockito dependencies](#63-mockito-dependencies)
   - [6.4. Annotations](#64-annotations)
-  - [6.5. asd](#65-asd)
+- [7. Code Coverage](#7-code-coverage)
+  - [7.1. Jacoco Metrics](#71-jacoco-metrics)
 
 # 1. What is a Unit Test
 
@@ -37,7 +38,7 @@
 
 # 5. JUnit dependencies
 
-- Option with less dependencies:
+- **Option with less dependencies**
 
   ```xml
       <dependency>
@@ -63,16 +64,15 @@
       </dependency>
   ```
 
-- Full option:
-
-```xml
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter</artifactId>
-        <version>5.11.0</version>
-        <scope>test</scope>
-    </dependency>
-```
+- **Full option**
+  ```xml
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter</artifactId>
+          <version>5.11.0</version>
+          <scope>test</scope>
+      </dependency>
+  ```
 
 # 6. Mockito
 
@@ -133,4 +133,22 @@
 
   ![Mock and InjectMock](images/mock-inject-mock.png)
 
-## 6.5. asd
+# 7. Code Coverage
+
+## 7.1. Jacoco Metrics
+
+| Column                  | Description                                                                           |
+| ----------------------- | ------------------------------------------------------------------------------------- |
+| **Element**             | Package, class, or module being analyzed.                                             |
+| **Missed Instructions** | Number of Java bytecode instructions that were not executed by tests.                 |
+| **Cov. (Instructions)** | Percentage of bytecode instructions executed during tests.                            |
+| **Missed Branches**     | Number of conditional branches that were not executed (e.g., `if`, `else`, `switch`). |
+| **Cov. (Branches)**     | Percentage of conditional branches executed during tests.                             |
+| **Missed (Cxty)**       | Number of missed cyclomatic complexity units.                                         |
+| **Cxty**                | Total cyclomatic complexity units in the analyzed code.                               |
+| **Missed (Lines)**      | Number of source code lines not executed during tests.                                |
+| **Lines**               | Total number of executable source code lines.                                         |
+| **Missed (Methods)**    | Number of methods that were never executed during tests.                              |
+| **Methods**             | Total number of methods analyzed.                                                     |
+| **Missed (Classes)**    | Number of classes that were never executed during tests.                              |
+| **Classes**             | Total number of classes analyzed.                                                     |

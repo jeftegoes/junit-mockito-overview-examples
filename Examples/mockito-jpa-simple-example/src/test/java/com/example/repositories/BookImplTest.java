@@ -9,11 +9,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -106,7 +105,5 @@ public class BookImplTest {
 
         verify(entityManager, times(1)).merge(originalBook);
         verify(entityManager, times(1)).find(Book.class, bookToUpdateId);
-
-
     }
 }

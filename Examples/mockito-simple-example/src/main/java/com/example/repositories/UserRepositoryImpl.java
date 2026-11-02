@@ -6,10 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserRepositoryImpl implements UserRepository {
-    private Map<String, User> users = new HashMap<>();
+    private final Map<String, User> users = new HashMap<>();
 
     @Override
     public boolean save(User user) {
+
         boolean returnValue = false;
 
         if (!users.containsKey(user.getId())) {
