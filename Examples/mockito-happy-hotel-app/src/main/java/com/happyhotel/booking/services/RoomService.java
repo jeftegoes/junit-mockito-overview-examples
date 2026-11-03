@@ -2,7 +2,7 @@ package com.happyhotel.booking.services;
 
 import com.happyhotel.booking.BookingRequest;
 import com.happyhotel.booking.BusinessException;
-import com.happyhotel.booking.Room;
+import com.happyhotel.booking.entities.Room;
 
 import java.util.HashMap;
 import java.util.List;

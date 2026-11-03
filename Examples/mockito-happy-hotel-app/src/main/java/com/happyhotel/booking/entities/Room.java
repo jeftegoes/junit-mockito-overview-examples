@@ -1,4 +1,4 @@
-package com.happyhotel.booking;
+package com.happyhotel.booking.entities;
 
 public class Room {
 

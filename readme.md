@@ -11,7 +11,16 @@
   - [6.1. Test Double](#61-test-double)
   - [6.2. Types of Test Doubles](#62-types-of-test-doubles)
   - [6.3. Mockito dependencies](#63-mockito-dependencies)
-  - [6.4. Annotations](#64-annotations)
+  - [6.4. First Mocks](#64-first-mocks)
+  - [6.5. First Mocks](#65-first-mocks)
+  - [6.6. Returning Custom Values](#66-returning-custom-values)
+  - [6.7. Multiple thenReturn calls](#67-multiple-thenreturn-calls)
+  - [6.8. Throwing Exceptions](#68-throwing-exceptions)
+  - [6.9. Argument Matchers](#69-argument-matchers)
+  - [6.10. Verifying Behaviour](#610-verifying-behaviour)
+  - [6.11. Spies](#611-spies)
+  - [6.12. Mocking Void Methods](#612-mocking-void-methods)
+  - [6.13. Mocking Construction](#613-mocking-construction)
 - [7. Code Coverage](#7-code-coverage)
   - [7.1. Jacoco Metrics](#71-jacoco-metrics)
 
@@ -112,7 +121,7 @@
     </dependency>
 ```
 
-## 6.4. Annotations
+## 6.4. First Mocks
 
 - `@ExtendWith(MockitoExtension.class)` - To the test class and annotating mocked fields with `@Mock`.
   - `@RunWith(MockitoJUnitRunner.class)` - JUnit 4
@@ -131,7 +140,27 @@
     }
   ```
 
-  ![Mock and InjectMock](images/mock-inject-mock.png)
+## 6.5. First Mocks
+
+![Mock and InjectMock](images/mock-inject-mock.png)
+
+## 6.6. Returning Custom Values
+
+- `when(this.roomService.getAvailableRooms()).thenReturn(rooms);`
+
+## 6.7. Multiple thenReturn calls
+
+## 6.8. Throwing Exceptions
+
+## 6.9. Argument Matchers
+
+## 6.10. Verifying Behaviour
+
+## 6.11. Spies
+
+## 6.12. Mocking Void Methods
+
+## 6.13. Mocking Construction
 
 # 7. Code Coverage
 
